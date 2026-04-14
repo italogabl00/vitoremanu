@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="pt-br" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chá de Casa Nova - Vitor & Manu</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- AOS Animation -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <!-- Fonte e Cores customizadas (Tons de Terra / Neutros) -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#faf9f8', 
+              100: '#ebe6e2',
+              200: '#d7cec8',
+              300: '#c0b1a6',
+              400: '#a38f82',
+              500: '#8c7365', 
+              600: '#755c4f', // Cor principal (Terra/Taupe escuro)
+              700: '#5e483e',
+              800: '#4d3b33',
+              900: '#40322b',
+            }
+          },
+          fontFamily: {
+            sans: ['Poppins', 'sans-serif'],
+            serif: ['Playfair Display', 'serif'],
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Ocultar scrollbar mantendo a funcionalidade em alguns containers se necessário */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #d7cec8;
+      border-radius: 10px;
+    }
+
+    body {
+      background-image: radial-gradient(#d7cec8 1px, transparent 1px);
+      background-size: 24px 24px;
+      background-color: #faf9f8;
+    }
+  </style>
+</head>
+
+<body class="text-gray-800 antialiased min-h-screen flex flex-col items-center pb-20">
+
+  <!-- Header / Hero Section -->
+  <header class="w-full max-w-3xl mx-auto mt-6 md:mt-10 px-4" data-aos="fade-down" data-aos-duration="800">
+    <div
+      class="bg-white rounded-[40px] shadow-xl overflow-hidden text-center relative border border-white/50 backdrop-blur-sm">
+
+      <!-- Top Decor -->
+      <div class="bg-gradient-to-r from-brand-300 via-brand-400 to-brand-500 h-3 w-full"></div>
+
+      <div class="px-8 py-12 lg:py-16">
+        <span
+          class="inline-block px-4 py-1.5 rounded-full bg-brand-50 border border-brand-200 text-brand-700 text-sm font-semibold mb-6 tracking-widest uppercase shadow-sm">
+          🏡 Chá de Casa Nova
+        </span>
+        <h1 class="font-serif text-5xl lg:text-6xl font-bold text-gray-900 mb-4 leading-tight">
+          Vitor & Manu
+        </h1>
+        <p class="text-lg lg:text-xl text-gray-600 font-light max-w-md mx-auto mb-8">
+          Estamos muito felizes em convidar você para celebrar com a gente e nos ajudar a montar o nosso tão sonhado novo lar!
+        </p>
+
+        <!-- Detalhes Evento -->
+        <div class="bg-gray-50/50 rounded-3xl p-4 md:p-6 flex flex-col md:flex-row justify-center items-center gap-2 md:gap-8 border border-gray-100">
+          <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Ch%C3%A1+de+Casa+Nova+-+V%C3%ADtor+e+Manu&dates=20260509T193000/20260509T230000&ctz=America/Fortaleza&location=R.+Alexandre+Bara%C3%BAna,+637+-+Damas" target="_blank" rel="noopener noreferrer" 
+             class="group flex flex-col items-center p-4 rounded-2xl hover:bg-white hover:shadow-md border border-transparent hover:border-brand-200 transition-all w-full md:w-56 cursor-pointer">
+            <div class="text-2xl mb-2 transform group-hover:scale-110 transition-transform">📅</div>
+            <p class="font-medium text-gray-900 group-hover:text-brand-600 transition-colors">09 de Maio de 2026</p>
+            <p class="text-sm text-gray-500">19:30h (Adicionar!)</p>
+          </a>
+          
+          <div class="hidden md:block w-px bg-gray-200 h-16"></div>
+          
+          <a href="https://www.google.com/maps/search/?api=1&query=R.+Alexandre+Bara%C3%BAna,+637+-+Damas" target="_blank" rel="noopener noreferrer"
+             class="group flex flex-col items-center p-4 rounded-2xl hover:bg-white hover:shadow-md border border-transparent hover:border-brand-200 transition-all w-full md:w-56 cursor-pointer">
+            <div class="text-2xl mb-2 transform group-hover:scale-110 transition-transform">📍</div>
+            <p class="font-medium text-gray-900 group-hover:text-brand-600 transition-colors">R. Alexandre Baraúna, 637</p>
+            <p class="text-sm text-gray-500">Damas (Abrir Mapa)</p>
+          </a>
+        </div>
+
+        <div class="mt-8">
+          <p class="text-sm text-gray-500 mb-2 uppercase tracking-wide font-medium">Contagem Regressiva</p>
+          <div id="countdown"
+            class="font-serif text-3xl md:text-4xl text-brand-600 font-semibold flex justify-center gap-2 lg:gap-4">
+            <!-- Countdown preenchido via JS -->
+            Carregando...
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Bottom Decor -->
+      <div class="bg-gradient-to-r from-brand-500 via-brand-400 to-brand-300 h-2 w-full opacity-50"></div>
+    </div>
+  </header>
+
+  <!-- Lista de Presentes -->
+  <main class="w-full max-w-4xl mx-auto mt-16 px-4">
+    <div class="text-center mb-10" data-aos="fade-up">
+      <h2 class="font-serif text-3xl md:text-4xl font-bold text-gray-900 mb-3">Lista de Presentes</h2>
+      <p class="text-gray-500">Escolha um item com carinho para o nosso novo lar 🤍</p>
+    </div>
+
+    <!-- Container do Grid -->
+    <div id="grid-presentes" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Cards injetados via JS -->
+      <div class="col-span-full py-12 text-center">
+        <div class="inline-block animate-spin rounded-full h-8 w-8 border-4 border-brand-200 border-t-brand-600 mb-4">
+        </div>
+        <p class="text-brand-600 font-medium">Carregando lista de presentes...</p>
+      </div>
+    </div>
+  </main>
+
+
+  <!-- MODAL DE SELEÇÃO -->
+  <div id="modal"
+    class="fixed inset-0 bg-gray-900/60 z-50 hidden flex items-center justify-center p-4 backdrop-blur-sm transition-opacity duration-300 opacity-0">
+    <div
+      class="bg-white rounded-[32px] p-6 md:p-8 max-w-md w-full shadow-2xl transform scale-95 transition-transform duration-300"
+      id="modal-content">
+
+      <div class="flex justify-between items-start mb-6">
+        <div>
+          <h2 class="font-serif text-2xl font-bold text-gray-900">Confirmar Presença</h2>
+          <p class="text-sm text-gray-500 mt-1">Quase lá!</p>
+        </div>
+        <button onclick="fecharModal()"
+          class="text-gray-400 hover:text-gray-600 bg-gray-100 hover:bg-gray-200 h-8 w-8 rounded-full flex items-center justify-center transition-colors">
+          &times;
+        </button>
+      </div>
+
+      <div class="bg-brand-50 border border-brand-100 rounded-2xl p-4 mb-6">
+        <p class="text-sm text-gray-500 mb-1">Presente selecionado:</p>
+        <p id="modal-presente-nome" class="font-serif text-lg font-semibold text-brand-700"></p>
+      </div>
+
+      <form id="form" class="space-y-4">
+        <div>
+          <label for="nome" class="block text-sm font-medium text-gray-700 mb-1.5 ml-1">Seu Nome Completo</label>
+          <input type="text" id="nome" required
+            class="w-full px-5 py-3.5 rounded-xl border border-gray-200 bg-gray-50 focus:bg-white focus:ring-2 focus:ring-brand-400 focus:border-brand-400 outline-none transition-all"
+            placeholder="Como os noivos te conhecem?">
+        </div>
+
+        <!-- Área Quantidade (dinâmica) -->
+        <div id="qtd-container" class="hidden">
+          <label class="block text-sm font-medium text-gray-700 mb-1.5 ml-1">Quantidade</label>
+          <div class="flex items-center gap-3">
+            <button type="button" onclick="mudarQtd(-1)"
+              class="w-12 h-10 rounded-full bg-gray-100 hover:bg-gray-200 text-gray-800 font-bold flex items-center justify-center text-xl transition-colors pb-1">-</button>
+            <span id="qtd-display" class="font-semibold text-lg w-6 text-center">1</span>
+            <button type="button" onclick="mudarQtd(1)"
+              class="w-12 h-10 rounded-full bg-brand-100 hover:bg-brand-200 text-brand-700 font-bold flex items-center justify-center text-xl transition-colors pb-1">+</button>
+            <span id="qtd-restante-aviso" class="text-xs text-gray-400 ml-2 font-medium"></span>
+          </div>
+        </div>
+
+        <!-- Área PIX (Oculta por padrão) -->
+        <div id="pix-container" class="hidden bg-gray-50 p-5 rounded-2xl border border-gray-200 text-sm text-gray-700">
+          <div class="flex items-center gap-2 mb-3 text-brand-600">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect width="20" height="14" x="2" y="5" rx="2" />
+              <line x1="2" x2="22" y1="10" y2="10" />
+            </svg>
+            <span class="font-semibold text-base text-gray-800">Pagamento via PIX</span>
+          </div>
+          <p class="mb-1 text-gray-500">Chave PIX (Aleatória):</p>
+          <div class="bg-white p-3 rounded-lg border border-gray-200 flex justify-between items-center mb-3">
+            <code class="text-xs text-gray-800 overflow-hidden text-ellipsis mr-2">d69a9b13-0d8a-4f77-81d9-37bbe9e6acc5</code>
+          </div>
+          <p class="text-xs text-gray-500"><strong>Titular:</strong> Antonio Vitor Torres Alves de Sá<br>Banco Inter</p>
+        </div>
+
+        <button type="submit" id="btn"
+          class="w-full mt-4 py-4 bg-brand-600 hover:bg-brand-700 text-white rounded-xl font-medium text-lg transition-all shadow-lg shadow-brand-200/50 hover:shadow-brand-300/50 flex items-center justify-center cursor-pointer">
+          Confirmar Presente 🤍
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL DE SUCESSO -->
+  <div id="modal-sucesso"
+    class="fixed inset-0 bg-gray-900/60 z-50 hidden flex items-center justify-center p-4 backdrop-blur-sm transition-opacity duration-300 opacity-0">
+    <div
+      class="bg-white rounded-[32px] p-8 max-w-sm w-full shadow-2xl text-center transform scale-95 transition-transform duration-300"
+      id="sucesso-content">
+      <div class="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6 text-4xl">
+        🎉
+      </div>
+      <h2 class="font-serif text-2xl font-bold text-gray-900 mb-2">Deu tudo certo!</h2>
+      <p class="text-gray-600 mb-6" id="mensagem"></p>
+
+      <div class="bg-gray-50 rounded-xl py-3 px-4 mb-8">
+        <p class="text-sm text-gray-500">Registrado para:</p>
+        <p class="font-semibold text-gray-800" id="nomeConfirmado"></p>
+      </div>
+
+      <button onclick="fecharSucesso()"
+        class="w-full py-3.5 bg-gray-900 hover:bg-black text-white rounded-xl font-medium transition-colors">
+        Fechar Agradecimento
+      </button>
+    </div>
+  </div>
+
+
+  <!-- LÓGICA DO APP -->
+  <script>
+    // Atenção: este link do Google Scripts pertence à conta Google de quem o criou.
+    const API_URL = "https://script.google.com/macros/s/AKfycbx1V9JvHISeE-9GiikLkXFvxAX2fSsJNs6K5qK8m75lMjnnMNyDZOgmgdqBHgPpcO3D/exec";
+
+    const listaPresentes = [
+      "Silicone Airfryer", "Aparelho de jantar 20 peças", "Kit ramequim",
+      "Cesto de pão", "Kit frigideira", "Suporte de papel toalha",
+      "Afiador de facas", "Pipoqueira",
+      "Porta Talheres", "Pote hermético", "Jogo de Toalhas",
+      "Kit lavabo banheiro (cor preta)", "Mantas para quarto",
+      "Contribuição via pix"
+    ];
+
+    // Configuração de Quantidades Extras
+    const configItens = {
+      "Jogo de Toalhas": { max: 5 },
+      "Mantas para quarto": { max: 5 },
+      "Contribuição via pix": { infinito: true }
+    };
+
+    const containerGrid = document.getElementById('grid-presentes');
+    const modal = document.getElementById('modal');
+    const modalContent = document.getElementById('modal-content');
+    const modalSucesso = document.getElementById('modal-sucesso');
+    const form = document.getElementById('form');
+    const btnSubmit = document.getElementById('btn');
+    const pixContainer = document.getElementById('pix-container');
+    const qtdContainer = document.getElementById('qtd-container');
+    const qtdDisplay = document.getElementById('qtd-display');
+    const qtdAviso = document.getElementById('qtd-restante-aviso');
+
+    let presenteSelecionadoAtual = "";
+    let quantidadeAtual = 1;
+    let maxQuantidadeAtual = 1;
+
+    // Mapeamento de ícones simples para deixar moderno
+    const icons = {
+      "Silicone Airfryer": "🍳", "Aparelho de jantar 20 peças": "🍽️", "Kit ramequim": "🥣",
+      "Cesto de pão": "🥖", "Kit frigideira": "🥘", "Suporte de papel toalha": "🧻",
+      "Afiador de facas": "🔪", "Pipoqueira": "🍿", "Porta Talheres": "🍴",
+      "Pote hermético": "🫙", "Jogo de Toalhas": "🛁", "Kit lavabo banheiro (cor preta)": "🧼",
+      "Mantas para quarto": "🛏️", "Contribuição via pix": "💸"
+    };
+
+    async function carregarPresentes() {
+      try {
+        const response = await fetch(API_URL);
+        const usados = await response.json();
+
+        containerGrid.innerHTML = ''; // Limpa o "Carregando..."
+
+        listaPresentes.forEach(item => {
+          // Extrair quantas vezes o item já foi escolhido, considerando sufixo (x unidades)
+          let count = 0;
+          usados.forEach(u => {
+            if (u.includes(item)) {
+              const match = u.match(/\((\d+) unidades?\)/);
+              count += match ? parseInt(match[1]) : 1;
+            }
+          });
+
+          const isPix = item === "Contribuição via pix";
+          const maxPermitido = configItens[item]?.max || 1;
+          const isInfinito = configItens[item]?.infinito || false;
+
+          const indisponivel = !isInfinito && count >= maxPermitido;
+          const restam = isInfinito ? 999 : (maxPermitido - count);
+          const icon = icons[item] || "🎁";
+
+          const card = document.createElement('div');
+          card.setAttribute('data-aos', 'fade-up');
+
+          if (indisponivel) {
+            // Estilo para Itens já escolhidos
+            card.className = "bg-white/50 border border-gray-100 rounded-[24px] p-6 flex flex-col items-center text-center opacity-60 cursor-not-allowed";
+            card.innerHTML = `
+              <div class="text-4xl mb-4 grayscale pr-2 opacity-50">${icon}</div>
+              <h3 class="font-serif text-lg font-semibold text-gray-500 mb-4 line-through">${item}</h3>
+              <div class="mt-auto w-full py-2.5 bg-gray-100 text-gray-500 text-sm font-medium rounded-xl border border-gray-200">
+                Já recebemos 🤍
+              </div>
+            `;
+          } else {
+            // Estilo para Itens normais
+            card.className = "bg-white border-2 border-white hover:border-brand-200 rounded-[24px] p-6 flex flex-col items-center text-center shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all cursor-pointer group relative";
+
+            // Badge visual se houver mais de 1 unidade para presentear
+            let badge = '';
+            if (maxPermitido > 1 && !isInfinito && restam > 0) {
+              badge = `<div class="absolute top-4 right-4 bg-gray-100 text-brand-700 text-[11px] font-bold px-2.5 py-1 rounded-lg">Restam ${restam}</div>`;
+            } else if (isInfinito) {
+              badge = `<div class="absolute top-4 right-4 bg-gray-100 text-brand-700 text-[11px] font-bold px-2.5 py-1 rounded-lg">Livre</div>`;
+            }
+
+            card.innerHTML = `
+              ${badge}
+              <div class="text-4xl mb-4 transform group-hover:scale-110 transition-transform mt-2">${icon}</div>
+              <h3 class="font-serif text-lg font-semibold text-gray-800 mb-4">${item}</h3>
+              <button onclick="abrirModal('${item}', ${isPix}, ${restam}, ${maxPermitido > 1})" class="mt-auto w-full py-2.5 bg-brand-50 group-hover:bg-brand-600 border border-brand-100 group-hover:border-brand-600 text-brand-700 group-hover:text-white font-medium rounded-xl transition-colors shadow-sm">
+                Presentear
+              </button>
+            `;
+          }
+          containerGrid.appendChild(card);
+        });
+      } catch (error) {
+        console.error("Erro ao carregar lista:", error);
+        containerGrid.innerHTML = '<p class="col-span-full text-center text-red-500 font-medium p-4 bg-red-50 rounded-xl">Oops! Erro ao carregar os presentes. Atualize a página.</p>';
+      }
+    }
+
+    // Modal Control
+    function abrirModal(itemNome, isPix, restam, mostrarQtd) {
+      presenteSelecionadoAtual = itemNome;
+      maxQuantidadeAtual = isPix ? 1 : restam;
+      quantidadeAtual = 1;
+
+      // Reseta display QTD
+      if (qtdDisplay) qtdDisplay.innerText = "1";
+
+      document.getElementById('modal-presente-nome').innerText = itemNome;
+
+      if (isPix) {
+        pixContainer.classList.remove('hidden');
+      } else {
+        pixContainer.classList.add('hidden');
+      }
+
+      // Mostrar controlador de quantidade se aplicável
+      if (mostrarQtd && restam > 1 && !isPix) {
+        qtdContainer.classList.remove('hidden');
+        qtdAviso.innerText = `(Máx. ${restam})`;
+      } else {
+        qtdContainer.classList.add('hidden');
+      }
+
+      modal.classList.remove('hidden');
+      // Timeout para criar o efeito de fade/zoom in
+      setTimeout(() => {
+        modal.classList.remove('opacity-0');
+        modalContent.classList.remove('scale-95');
+      }, 10);
+    }
+
+    function mudarQtd(delta) {
+      let nova = quantidadeAtual + delta;
+      if (nova >= 1 && nova <= maxQuantidadeAtual) {
+        quantidadeAtual = nova;
+        qtdDisplay.innerText = quantidadeAtual;
+      }
+    }
+
+    function fecharModal() {
+      modal.classList.add('opacity-0');
+      modalContent.classList.add('scale-95');
+      setTimeout(() => {
+        modal.classList.add('hidden');
+        form.reset();
+      }, 300); // 300ms time da transicão tailwind
+    }
+
+    function fecharSucesso() {
+      modalSucesso.classList.add('opacity-0');
+      setTimeout(() => {
+        modalSucesso.classList.add('hidden');
+      }, 300);
+    }
+
+    // Submit do Form
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const nome = document.getElementById('nome').value;
+
+      if (!presenteSelecionadoAtual) {
+        alert("Erro: Presente não selecionado. Feche e tente novamente!");
+        return;
+      }
+
+      btnSubmit.disabled = true;
+      btnSubmit.innerHTML = `
+        <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white inline-block" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"><circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle><path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path></svg>
+        Enviando...
+      `;
+
+      // Montar string do presente caso a quantidade seja maior que 1
+      let nomePresenteFinal = presenteSelecionadoAtual;
+      if (quantidadeAtual > 1) {
+        nomePresenteFinal += ` (${quantidadeAtual} unidades)`;
+      }
+
+      try {
+        await fetch(API_URL, {
+          method: "POST",
+          body: new URLSearchParams({
+            nome: nome,
+            presente: nomePresenteFinal
+          })
+        });
+
+        // Ocultar modal com sucesso e atualizar itens
+        fecharModal();
+        await carregarPresentes();
+
+        document.getElementById('mensagem').innerText = "Sua presença é muito importante para esse momento único em nossas vidas 🤍";
+        document.getElementById('nomeConfirmado').innerText = nome + (quantidadeAtual > 1 ? ` (${quantidadeAtual}x)` : '');
+
+        // Mostrar Sucesso
+        modalSucesso.classList.remove('hidden');
+        setTimeout(() => modalSucesso.classList.remove('opacity-0'), 10);
+
+      } catch (error) {
+        alert("Ocorreu um erro ao enviar. Verifique a internet e tente novamente!");
+      } finally {
+        btnSubmit.disabled = false;
+        btnSubmit.innerHTML = "Confirmar Presente 🤍";
+      }
+    });
+
+    // Inicia a aplicação
+    carregarPresentes();
+
+    // COUNTDOWN
+    const countdown = document.getElementById('countdown');
+    const eventDate = new Date("May 9, 2026 19:30:00").getTime();
+
+    // Mapeamento de unidades para display mais bonito
+    const updateCountdown = () => {
+      const now = new Date().getTime();
+      const diff = eventDate - now;
+
+      if (diff < 0) {
+        countdown.innerHTML = "Chegou o grande dia!";
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      const renderUnit = (val, text) => `
+        <div class="flex flex-col items-center">
+          <span class="w-16 h-16 md:w-20 md:h-20 bg-brand-50 text-brand-700 flex items-center justify-center rounded-2xl shadow-sm border border-brand-200">${val.toString().padStart(2, '0')}</span>
+          <span class="text-[10px] md:text-xs tracking-wider uppercase text-gray-400 mt-2 font-sans font-medium">${text}</span>
+        </div>
+      `;
+
+      countdown.innerHTML = `
+        ${renderUnit(days, 'Dias')}
+        <span class="text-brand-300 mt-3 md:mt-5">:</span>
+        ${renderUnit(hours, 'Horas')}
+        <span class="text-brand-300 mt-3 md:mt-5">:</span>
+        ${renderUnit(minutes, 'Min')}
+        <span class="text-brand-300 mt-3 md:mt-5 hidden sm:block">:</span>
+        <div class="hidden sm:block">${renderUnit(seconds, 'Seg')}</div>
+      `;
+    };
+
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
+
+  <!-- AOS Script -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      once: true,
+      duration: 700,
+      offset: 50
+    });
+  </script>
+
+</body>
+
+</html>
